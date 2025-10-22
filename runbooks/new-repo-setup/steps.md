@@ -13,7 +13,7 @@ This is a set of steps to follow to set up a new repository for a core mod.
 ## Steps
 
 1. Check out this repository, which contains some useful template items. 
-    `gh repo checkout silksong-modding/.github silksong-modding-github`
+    `gh repo clone silksong-modding/.github silksong-modding-github`
 2. Create the repo, e.g. 
     `gh repo create silksong-modding/Silksong.ModuleName --license EUPL-1.2 --public --clone`
 3. `cd` into the repo directory and create the project, e.g.
