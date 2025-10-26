@@ -18,12 +18,8 @@ This is a set of steps to follow to set up a new repository for a core mod.
     `gh repo create silksong-modding/Silksong.ModuleName --license EUPL-1.2 --public --clone`
 3. `cd` into the repo directory and create the project, e.g.
     `dotnet new silksongplugin --username silksong-modding --thunderstore-username silksong_modding -p`
-4. Clean up the template a bit:
-    1. Remove the `Silksong_` prefix from the plugin class name and related filename. 
-    2. Change the plugin ID from `io.github.silksong-modding.silksong_modulename` to
-        `org.silksong-modding.modulename` and remove the todo.
-5. Add a license expression to the NuGet package: `<PackageLicenseExpression>EUPL-1.2</PackageLicenseExpression>`
-6. Set up csharpier and husky
+4. Add a license expression to the NuGet package: `<PackageLicenseExpression>EUPL-1.2</PackageLicenseExpression>`
+5. Set up csharpier and husky
     1. Add a reference to csharpier in the csproj: 
 	    `<PackageReference Include="CSharpier.MsBuild" Version="1.1.2" PrivateAssets="all" />`
 	2. Force `lf` line endings for everyone
@@ -39,8 +35,8 @@ This is a set of steps to follow to set up a new repository for a core mod.
     5. Add the husky pre-commit hook:
 	    `dotnet husky add pre-commit -c "dotnet husky run --group pre-commit"`
 	6. Build the project: `dotnet build`
-7. Commit and push the initial project setup.
-8. Finish repository configuration.
+6. Commit and push the initial project setup.
+7. Finish repository configuration.
 	1. Open the repository on the web: `gh repo view -w`
 	2. Go to the settings tab and change the following settings:
 		- Enable release immutability: on
