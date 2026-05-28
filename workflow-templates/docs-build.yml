@@ -1,0 +1,26 @@
+name: Docs
+
+on:
+  push:
+    branches: [$default-branch]
+  repository_dispatch:
+    # To receive these events, the repository must configure write protection on the default branch
+    # and then opt-in to the Modding Docs Bot
+    types: [template-updated]
+
+permissions:
+  actions: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  generate-docs:
+    uses: silksong-modding/silksong-modding-style-docfx/.github/workflows/build-docs.yml@main
+    with:
+      environment-name: github-pages
+      # update this if needed
+      docs-path: docs
