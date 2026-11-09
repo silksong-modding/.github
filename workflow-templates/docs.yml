@@ -1,0 +1,32 @@
+# Builds and publishes styled DocFX docs for a library mod.
+#
+# To use it, copy this file to .forgejo/workflows/docs.yml in your repo and set docs-path below.
+# The site is published to https://docs.silksong-modding.org/<Repo>/ (exact repo casing).
+#
+# To have your docs rebuilt whenever the shared theme changes, also:
+#   1. Add "silksong-modding/<Repo> docs.yml" to .forgejo/docs-consumers.txt in
+#      silksong-modding/silksong-modding-style-docfx.
+#   2. Give the docs-bot team write access to your repo's Actions unit (should happen automatically)
+#   3. Protect your default branch, because whoever can push to it controls what gets deployed.
+name: Docs
+
+on:
+  push:
+    branches: [main]
+  # Triggered by silksong-modding-style-docfx when the theme changes.
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  docs:
+    # A host-qualified reusable workflow runs as a single job, so it needs a runner label.
+    runs-on: ubuntu-latest
+    uses: https://git.silksong-modding.org/silksong-modding/silksong-modding-style-docfx/.forgejo/workflows/build-docs.yml@main
+    with:
+      # The directory containing your docfx.json. Update this if needed.
+      docs-path: docs
+      # Uncomment for docs-only repos that have no project to build first.
+      # dotnet-build: false
