@@ -35,8 +35,11 @@ This is a set of steps to follow to set up a new repository for a core mod.
     5. Add the husky pre-commit hook:
 	    `dotnet husky add pre-commit -c "dotnet husky run --group pre-commit"`
 	6. Build the project: `dotnet build`
-6. Commit and push the initial project setup.
-7. Finish repository configuration.
+6. Copy the org's [pull request template](../../pull_request_template.md). Forgejo doesn't apply it from
+    this repo automatically, so each repo needs its own copy, e.g.
+    `mkdir -p .forgejo && cp ../silksong-modding-github/pull_request_template.md .forgejo/pull_request_template.md`
+7. Commit and push the initial project setup.
+8. Finish repository configuration.
 	1. Open the repository on the web: `gh repo view -w`
 	2. Go to the settings tab and change the following settings:
 		- Enable release immutability: on
